@@ -1,0 +1,64 @@
+PEJ TPKN (KA) JKN		
+ptpknka_j 15	
+ptpknka_i 10	
+ptpknka_k 5
+
+PKD KOTA STAR		
+pkdks_j
+pkdks_i
+pkdks_k
+
+PKD KUALA MUDA		
+pkdkm_j	
+pkdkm_i	
+pkdkm_k
+
+PKD KULIM				
+pkdk_j
+pkdk_i
+pkdk_k	
+
+PKD KUBANG PASU	
+pkdkp_j
+pkdkp_i
+pkdkp_k
+
+PKD BALING		
+pkdb_j
+pkdb_i
+pkdb_k
+
+PKD LANGKAWI		
+pkdl_j
+pkdl_i
+pkdl_k
+
+PKD YAN		
+pkdy_j
+pkdy_i
+pkdy_k
+
+PKD PENDANG		
+pkdp_j
+pkdp_i
+pkdp_k
+
+PKD SIK		
+pkds_j
+pkds_i
+pkds_k
+
+PKD BANDAR BAHARU		
+pkdbb_j
+pkdbb_i
+pkdbb_k
+
+VECTOR NEGERI		
+vn_j
+vn_i
+vn_k
+
+PKPMA BUKIT KAYU HITAM		
+pkpmabkh_j
+pkpmabkh_i
+pkpmabkh_k
