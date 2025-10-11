@@ -111,10 +111,10 @@
             </div>
             
             <div class="space-y-4">
-                <label for="dataSelect" class="block text-sm font-semibold text-accent-700">Select Data Category</label>
+                <label for="dataSelect" class="block text-sm font-semibold text-accent-700">Pilih PTJ</label>
                 <div class="relative">
                     <select id="dataSelect" onchange="loadChart()" class="w-full p-4 pr-12 border-2 border-accent-200 rounded-xl text-base bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all duration-300 appearance-none cursor-pointer hover:border-accent-300">
-                        <option value="">Choose a category to begin analysis...</option>
+                        <option value="">Pilih PTJ...</option>
                         <option value="PEJ TPKN (KA) JKN">🏥 PEJ TPKN (KA) JKN</option>
                         <option value="PKD KOTA STAR">⭐ PKD KOTA STAR</option>
                         <option value="PKD KUALA MUDA">🌊 PKD KUALA MUDA</option>
@@ -139,10 +139,10 @@
 
             <!-- Catatan Filter Section -->
             <div class="space-y-4 mt-6">
-                <label for="catatanSelect" class="block text-sm font-semibold text-accent-700">Select Catatan</label>
+                <label for="catatanSelect" class="block text-sm font-semibold text-accent-700">Pilih Perjawatan</label>
                 <div class="relative">
                     <select id="catatanSelect" onchange="loadChartWithCatatan()" disabled class="w-full p-4 pr-12 border-2 border-accent-200 rounded-xl text-base bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all duration-300 appearance-none cursor-pointer hover:border-accent-300 disabled:opacity-50 disabled:cursor-not-allowed">
-                        <option value="">Select Catatan...</option>
+                        <option value="">Pilih perjawatan...</option>
                     </select>
                     <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                         <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,20 +219,68 @@
             </div>
         </div>
 
-        <!-- Analisis Container -->
-        <div class="hidden animate-slide-up" id="chartContainer">
-            <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-accent-200/50 p-6 sm:p-8">
-                <!-- Data Category Section -->
-                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 mb-6 border-l-4 border-blue-500">
-                    <div class="flex items-center mb-2">
-                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
-                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+        <!-- Statistics Perjawatan Section -->
+        <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-accent-200/50 p-6 sm:p-8 mt-8 animate-fade-in">
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 mb-6 border-l-4 border-green-500">
+                <div class="flex items-center mb-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Statistics Perjawatan</h3>
+                </div>
+                <p class="text-sm text-gray-600 ml-11">Jumlah perjawatan bagi semua jawatan mengikut format (JIK)</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-blue-600 mb-1">Jumlah Perjawatan</p>
+                            <p class="text-2xl font-bold text-blue-800" id="totalJawatan">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-800">Data Category</h3>
                     </div>
-                    <p class="text-sm text-gray-600 ml-11" id="chartTitle">Interactive chart showing data distribution</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-purple-600 mb-1">Jumlah Isi</p>
+                            <p class="text-2xl font-bold text-purple-800" id="totalIsi">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="text-sm font-medium text-green-600 mb-1">Jumlah Kekosongan</p>
+                            <p class="text-2xl font-bold text-green-800" id="totalKekosongan">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <div id="catatanSection" class="mb-4" style="display: none;">
+                        <p class="text-sm font-medium text-green-600 mb-2">Perjawatan yang mempunyai kekosongan</p>
+                        <div id="catatanList" class="text-xs text-gray-700 space-y-1">
+                            <!-- Catatan bullet points will be displayed here -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -240,6 +288,188 @@
 
     <script>
         let chart = null;
+
+        // Function to calculate totals across all records for a category
+        function calculateCategoryTotals(data, category) {
+            const categoryFieldMap = {
+                'PEJ TPKN (KA) JKN': 'ptpknka',
+                'PKD KOTA STAR': 'pkdks',
+                'PKD KUALA MUDA': 'pkdkm',
+                'PKD KULIM': 'pkdk',
+                'PKD KUBANG PASU': 'pkdkp',
+                'PKD BALING': 'pkdb',
+                'PKD LANGKAWI': 'pkdl',
+                'PKD YAN': 'pkdy',
+                'PKD PENDANG': 'pkdp',
+                'PKD SIK': 'pkds',
+                'PKD BANDAR BAHARU': 'pkdbb',
+                'VECTOR NEGERI': 'vn',
+                'PKPMA BUKIT KAYU HITAM': 'pkpmabkh'
+            };
+
+            const fieldPrefix = categoryFieldMap[category];
+            
+            if (!fieldPrefix || !data || data.length === 0) {
+                return { jawatan: 0, isi: 0, kekosongan: 0, catatanWithKekosongan: [] };
+            }
+
+            let totalJawatan = 0;
+            let totalIsi = 0;
+            let totalKekosongan = 0;
+            let catatanWithKekosongan = [];
+
+            // Sum up values from all records
+            data.forEach((record, index) => {
+                const jawatanField = `${fieldPrefix}_j`;
+                const isiField = `${fieldPrefix}_i`;
+                const kekosonganField = `${fieldPrefix}_k`;
+
+                if (record.hasOwnProperty(jawatanField)) {
+                    const value = record[jawatanField];
+                    const numValue = (value === '' || value === null || value === undefined) ? 0 : (parseInt(value) || 0);
+                    totalJawatan += numValue;
+                }
+
+                if (record.hasOwnProperty(isiField)) {
+                    const value = record[isiField];
+                    const numValue = (value === '' || value === null || value === undefined) ? 0 : (parseInt(value) || 0);
+                    totalIsi += numValue;
+                }
+
+                if (record.hasOwnProperty(kekosonganField)) {
+                    const value = record[kekosonganField];
+                    const numValue = (value === '' || value === null || value === undefined) ? 0 : (parseInt(value) || 0);
+                    totalKekosongan += numValue;
+                    
+                    // If kekosongan > 0, collect the Catatan
+                    if (numValue > 0 && record.hasOwnProperty('Catatan') && record.Catatan && record.Catatan.trim() !== '') {
+                        catatanWithKekosongan.push(record.Catatan.trim());
+                    }
+                }
+            });
+
+            const result = {
+                jawatan: totalJawatan,
+                isi: totalIsi,
+                kekosongan: totalKekosongan,
+                catatanWithKekosongan: catatanWithKekosongan
+            };
+            
+            return result;
+        }
+
+        // Function to display Catatan as bullet points with "See More" functionality
+        function displayCatatanList(catatanArray) {
+            const catatanListElement = document.getElementById('catatanList');
+            const catatanSectionElement = document.getElementById('catatanSection');
+            
+            if (!catatanListElement || !catatanSectionElement) {
+                console.error('catatanList or catatanSection element not found!');
+                return;
+            }
+            
+            // Clear existing content
+            catatanListElement.innerHTML = '';
+            
+            if (!catatanArray || catatanArray.length === 0) {
+                // Hide the entire Catatan section when there are no vacancies
+                catatanSectionElement.style.display = 'none';
+                return;
+            }
+            
+            // Show the Catatan section when there are vacancies
+            catatanSectionElement.style.display = 'block';
+            
+            // Remove duplicates and create bullet points
+            const uniqueCatatan = [...new Set(catatanArray)];
+            const maxDisplayItems = 1; // Show only 1 item initially
+            
+            // Create bullet points for initial display
+            const displayItems = uniqueCatatan.slice(0, maxDisplayItems);
+            const bulletPoints = displayItems.map(catatan => 
+                `<div class="flex items-start space-x-2">
+                    <span class="text-green-500 font-bold mt-0.5">•</span>
+                    <span class="text-xs text-gray-700 leading-relaxed">${catatan}</span>
+                </div>`
+            ).join('');
+            
+            // Add "See More" button if there are more items
+            let seeMoreButton = '';
+            if (uniqueCatatan.length > maxDisplayItems) {
+                const remainingCount = uniqueCatatan.length - maxDisplayItems;
+                seeMoreButton = `
+                    <div class="mt-2 text-end">
+                        <button onclick="openCatatanPopup()" class="text-xs text-blue-600 hover:text-blue-800 underline font-medium transition-colors duration-200">
+                            See More (+${remainingCount} more)
+                        </button>
+                    </div>
+                `;
+            }
+            
+            catatanListElement.innerHTML = bulletPoints + seeMoreButton;
+            
+            // Store all catatan data globally for popup use
+            window.allCatatanData = uniqueCatatan;
+        }
+
+        // Function to open Catatan popup
+        function openCatatanPopup() {
+            const modal = document.getElementById('catatanModal');
+            const modalContent = document.getElementById('catatanModalContent');
+            
+            if (!window.allCatatanData || window.allCatatanData.length === 0) {
+                return;
+            }
+            
+            // Create bullet points for all items
+            const allBulletPoints = window.allCatatanData.map(catatan => 
+                `<div class="flex items-start space-x-3 py-2">
+                    <span class="text-green-500 font-bold mt-1 text-sm">•</span>
+                    <span class="text-sm text-gray-700 leading-relaxed">${catatan}</span>
+                </div>`
+            ).join('');
+            
+            modalContent.innerHTML = allBulletPoints;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        // Function to close Catatan popup
+        function closeCatatanPopup() {
+            const modal = document.getElementById('catatanModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restore background scrolling
+        }
+
+        // Function to update the Statistics Perjawatan section
+        function updateStatisticsPerjawatan(totals) {
+            const jawatanElement = document.getElementById('totalJawatan');
+            const isiElement = document.getElementById('totalIsi');
+            const kekosonganElement = document.getElementById('totalKekosongan');
+            
+            if (jawatanElement) {
+                jawatanElement.textContent = totals.jawatan;
+            } else {
+                console.error('totalJawatan element not found!');
+            }
+            
+            if (isiElement) {
+                isiElement.textContent = totals.isi;
+            } else {
+                console.error('totalIsi element not found!');
+            }
+            
+            if (kekosonganElement) {
+                kekosonganElement.textContent = totals.kekosongan;
+            } else {
+                console.error('totalKekosongan element not found!');
+            }
+            
+            // Display Catatan list for positions with kekosongan > 0
+            if (totals.catatanWithKekosongan) {
+                displayCatatanList(totals.catatanWithKekosongan);
+            }
+        }
 
         async function loadChart() {
             const select = document.getElementById('dataSelect');
@@ -252,7 +482,9 @@
                 chartContainer.classList.add('hidden');
                 messageDiv.innerHTML = '';
                 catatanSelect.disabled = true;
-                catatanSelect.innerHTML = '<option value="">Select Catatan...</option>';
+                catatanSelect.innerHTML = '<option value="">Pilih perjawatan...</option>';
+                // Reset totals when no category is selected
+                updateStatisticsPerjawatan({ jawatan: 0, isi: 0, kekosongan: 0 });
                 return;
             }
             
@@ -271,14 +503,29 @@
                         </div>
                         <div>
                             <h3 class="text-sm font-semibold text-blue-800">Category Selected</h3>
-                            <p class="text-sm text-blue-600 mt-1">Please select a Catatan to view the chart data.</p>
+                            <p class="text-sm text-blue-600 mt-1">Loading data and calculating totals...</p>
                         </div>
                     </div>
                 </div>
             `;
             
-            // Load catatan options for the selected category
-            await loadCatatanOptions(select.value);
+            // Calculate and display totals for the selected category
+            try {
+                const response = await fetch('b.php');
+                const data = await response.json();
+
+                if (data.status === 'success' && data.data && data.data.perjawatan) {
+                    const totals = calculateCategoryTotals(data.data.perjawatan, select.value);
+                    updateStatisticsPerjawatan(totals);
+                } else {
+                    console.error('Error in data response:', data);
+                    updateStatisticsPerjawatan({ jawatan: 0, isi: 0, kekosongan: 0 });
+                }
+            } catch (error) {
+                console.error('Error calculating totals:', error);
+                updateStatisticsPerjawatan({ jawatan: 0, isi: 0, kekosongan: 0 });
+            }
+
             return;
 
             // Show loading state with modern design
@@ -386,7 +633,8 @@
                 'PKD SIK': 'pkds',
                 'PKD BANDAR BAHARU': 'pkdbb',
                 'VECTOR NEGERI': 'vn',
-                'PKPMA BUKIT KAYU HITAM': 'pkpmabkh'
+                'PKPMA BUKIT KAYU HITAM': 'pkpmabkh',
+                'Catatan': 'catatan'
             };
 
             const fieldPrefix = categoryFieldMap[category];
@@ -583,7 +831,7 @@
             const catatanSelect = document.getElementById('catatanSelect');
             
             // Clear existing options except the first placeholder
-            catatanSelect.innerHTML = '<option value="">Select Catatan...</option>';
+            catatanSelect.innerHTML = '<option value="">Pilih perjawatan...</option>';
             
             if (!selectedCategory) {
                 catatanSelect.disabled = true;
@@ -775,6 +1023,8 @@
                     </div>
                 `;
                 chartContainer.classList.add('hidden');
+                // Reset totals on error
+                updateStatisticsPerjawatan({ jawatan: 0, isi: 0, kekosongan: 0 });
             }
         }
 
@@ -830,7 +1080,7 @@
                     const fieldName = `${fieldPrefix}_${suffix}`;
                     if (record.hasOwnProperty(fieldName)) {
                         const value = record[fieldName];
-                        const numValue = value === '' || value === null || value === undefined ? 0 : parseInt(value) || 0;
+                        const numValue = (value === '' || value === null || value === undefined) ? 0 : parseInt(value) || 0;
                         categoryData.push({
                             name: `${fieldName}_record${index + 1}`,
                             value: numValue
@@ -941,7 +1191,7 @@
         // Initialize Select2 with search functionality
         $(document).ready(function() {
             $('#dataSelect').select2({
-                placeholder: "Choose a category to begin analysis...",
+                placeholder: "Pilih PTJ...",
                 allowClear: true,
                 width: '100%',
                 theme: 'default',
@@ -960,7 +1210,7 @@
             $('#dataSelect').on('select2:clear', function (e) {
                 // Clear catatan options and disable it
                 const catatanSelect = document.getElementById('catatanSelect');
-                catatanSelect.innerHTML = '<option value="">Select Catatan...</option>';
+                catatanSelect.innerHTML = '<option value="">Pilih perjawatan...</option>';
                 catatanSelect.disabled = true;
                 
                 if (chart) {
@@ -973,7 +1223,7 @@
 
             // Initialize Catatan Select2
             $('#catatanSelect').select2({
-                placeholder: "Select Catatan...",
+                placeholder: "Pilih perjawatan...",
                 allowClear: true,
                 width: '100%',
                 theme: 'default',
@@ -1071,5 +1321,45 @@
             box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1) !important;
         }
     </style>
+
+    <!-- Catatan Modal -->
+    <div id="catatanModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">Catatan Perjawatan dengan Kekosongan</h3>
+                        <p class="text-sm text-gray-500">Senarai lengkap catatan untuk jawatan yang mempunyai kekosongan</p>
+                    </div>
+                </div>
+                <button onclick="closeCatatanPopup()" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Modal Content -->
+            <div class="flex-1 overflow-y-auto p-6">
+                <div id="catatanModalContent" class="space-y-2">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="flex justify-end p-6 border-t border-gray-200">
+                <button onclick="closeCatatanPopup()" class="px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 font-medium">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
