@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital Data Analytics Dashboard</title>
+    <title>Staffing Data Analytics Dashboard</title>
+    
+    <!-- Open Graph Meta Tags for Social Media Preview -->
+    <meta property="og:title" content="Staffing Data Analytics Dashboard - JKN Profiling">
+    <meta property="og:description" content="Interactive dashboard for analyzing hospital staffing data, positions, and vacancies across healthcare institutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://profile.kdh.moh.gov.my/perjawatan/">
+    <meta property="og:image" content="http://profile.kdh.moh.gov.my/perjawatan/preview-image-whatsapp.png">
+    <meta property="og:image:secure_url" content="https://profile.kdh.moh.gov.my/perjawatan/preview-image-whatsapp.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1125">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:alt" content="Staffing Data Analytics Dashboard Preview">
+    <meta property="og:site_name" content="JKN Profiling Dashboard">
+    <meta property="og:locale" content="en_US">
+    <meta property="fb:app_id" content="1234567890123456">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@jkn_profiling">
+    <meta name="twitter:creator" content="@jkn_profiling">
+    <meta name="twitter:title" content="Staffing Data Analytics Dashboard - JKN Profiling">
+    <meta name="twitter:description" content="Interactive dashboard for analyzing hospital staffing data, positions, and vacancies across healthcare institutions.">
+    <meta name="twitter:image" content="http://profile.kdh.moh.gov.my/perjawatan/preview-image-whatsapp.png">
+    <meta name="twitter:image:alt" content="Staffing Data Analytics Dashboard Preview">
+    
+    <!-- WhatsApp Specific Optimizations -->
+    <meta property="og:updated_time" content="<?php echo date('c'); ?>">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="http://profile.kdh.moh.gov.my/perjawatan/">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="description" content="Interactive dashboard for analyzing hospital staffing data, positions, and vacancies across healthcare institutions.">
+    <meta name="keywords" content="healthcare, staffing, analytics, dashboard, hospital, JKN, profiling">
+    <meta name="author" content="JKN Profiling Team">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Select2 CSS and JS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    
+
     <!-- html2canvas for screenshot functionality -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script>
@@ -54,19 +90,41 @@
     </script>
     <style>
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
+
         @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
+
         @keyframes pulseSoft {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
         }
     </style>
 </head>
+
 <body class="bg-gradient-to-br from-accent-50 via-primary-50 to-accent-100 min-h-screen font-inter">
     <!-- Header Section -->
     <div class="bg-white/80 backdrop-blur-sm border-b border-accent-200 sticky top-0 z-10">
@@ -109,7 +167,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="space-y-4">
                 <label for="dataSelect" class="block text-sm font-semibold text-accent-700">Pilih PTJ</label>
                 <div class="relative">
@@ -155,7 +213,7 @@
 
         <!-- Messages -->
         <div id="message" class="mb-6"></div>
-        
+
         <!-- Chart Container -->
         <div class="hidden animate-slide-up" id="chartContainer">
             <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-accent-200/50 p-6 sm:p-8">
@@ -171,14 +229,14 @@
                     </div>
                     <p class="text-sm text-gray-600 ml-11" id="chartTitle">Interactive chart showing data distribution</p>
                 </div>
-                
+
                 <!-- Chart Area with Data Display -->
                 <div class="flex flex-col lg:flex-row gap-6">
                     <!-- Chart Section -->
                     <div class="flex-1 h-96 sm:h-[28rem] relative">
                         <canvas id="dataChart" class="w-full h-full"></canvas>
                     </div>
-                    
+
                     <!-- Data Values Display Box -->
                     <div class="lg:w-80 w-full">
                         <div class="bg-red-50 border-2 border-red-200 rounded-xl p-6 h-full">
@@ -232,7 +290,7 @@
                 </div>
                 <p class="text-sm text-gray-600 ml-11">Jumlah perjawatan bagi semua jawatan mengikut format (JIK)</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
                 <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
                     <div class="flex items-center justify-between">
@@ -247,7 +305,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200">
                     <div class="flex items-center justify-between">
                         <div>
@@ -261,7 +319,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200">
                     <div class="flex items-center justify-between mb-4">
                         <div>
@@ -308,9 +366,14 @@
             };
 
             const fieldPrefix = categoryFieldMap[category];
-            
+
             if (!fieldPrefix || !data || data.length === 0) {
-                return { jawatan: 0, isi: 0, kekosongan: 0, catatanWithKekosongan: [] };
+                return {
+                    jawatan: 0,
+                    isi: 0,
+                    kekosongan: 0,
+                    catatanWithKekosongan: []
+                };
             }
 
             let totalJawatan = 0;
@@ -340,10 +403,13 @@
                     const value = record[kekosonganField];
                     const numValue = (value === '' || value === null || value === undefined) ? 0 : (parseInt(value) || 0);
                     totalKekosongan += numValue;
-                    
-                    // If kekosongan > 0, collect the Catatan
+
+                    // If kekosongan > 0, collect the Catatan with kekosongan value
                     if (numValue > 0 && record.hasOwnProperty('Catatan') && record.Catatan && record.Catatan.trim() !== '') {
-                        catatanWithKekosongan.push(record.Catatan.trim());
+                        catatanWithKekosongan.push({
+                            catatan: record.Catatan.trim(),
+                            kekosongan: numValue
+                        });
                     }
                 }
             });
@@ -354,7 +420,7 @@
                 kekosongan: totalKekosongan,
                 catatanWithKekosongan: catatanWithKekosongan
             };
-            
+
             return result;
         }
 
@@ -362,37 +428,50 @@
         function displayCatatanList(catatanArray) {
             const catatanListElement = document.getElementById('catatanList');
             const catatanSectionElement = document.getElementById('catatanSection');
-            
+
             if (!catatanListElement || !catatanSectionElement) {
                 console.error('catatanList or catatanSection element not found!');
                 return;
             }
-            
+
             // Clear existing content
             catatanListElement.innerHTML = '';
-            
+
             if (!catatanArray || catatanArray.length === 0) {
                 // Hide the entire Catatan section when there are no vacancies
                 catatanSectionElement.style.display = 'none';
                 return;
             }
-            
+
             // Show the Catatan section when there are vacancies
             catatanSectionElement.style.display = 'block';
-            
-            // Remove duplicates and create bullet points
-            const uniqueCatatan = [...new Set(catatanArray)];
+
+            // Group by catatan and sum kekosongan values
+            const catatanMap = new Map();
+            catatanArray.forEach(item => {
+                if (catatanMap.has(item.catatan)) {
+                    catatanMap.set(item.catatan, catatanMap.get(item.catatan) + item.kekosongan);
+                } else {
+                    catatanMap.set(item.catatan, item.kekosongan);
+                }
+            });
+
+            const uniqueCatatan = Array.from(catatanMap.entries()).map(([catatan, kekosongan]) => ({
+                catatan,
+                kekosongan
+            }));
+
             const maxDisplayItems = 1; // Show only 1 item initially
-            
+
             // Create bullet points for initial display
             const displayItems = uniqueCatatan.slice(0, maxDisplayItems);
-            const bulletPoints = displayItems.map(catatan => 
+            const bulletPoints = displayItems.map(item =>
                 `<div class="flex items-start space-x-2">
                     <span class="text-green-500 font-bold mt-0.5">•</span>
-                    <span class="text-xs text-gray-700 leading-relaxed">${catatan}</span>
+                    <span class="text-xs text-gray-700 leading-relaxed">${item.catatan}</span>
                 </div>`
             ).join('');
-            
+
             // Add "See More" button if there are more items
             let seeMoreButton = '';
             if (uniqueCatatan.length > maxDisplayItems) {
@@ -405,9 +484,9 @@
                     </div>
                 `;
             }
-            
+
             catatanListElement.innerHTML = bulletPoints + seeMoreButton;
-            
+
             // Store all catatan data globally for popup use
             window.allCatatanData = uniqueCatatan;
         }
@@ -416,19 +495,28 @@
         function openCatatanPopup() {
             const modal = document.getElementById('catatanModal');
             const modalContent = document.getElementById('catatanModalContent');
-            
+
             if (!window.allCatatanData || window.allCatatanData.length === 0) {
                 return;
             }
-            
-            // Create bullet points for all items
-            const allBulletPoints = window.allCatatanData.map(catatan => 
-                `<div class="flex items-start space-x-3 py-2">
-                    <span class="text-green-500 font-bold mt-1 text-sm">•</span>
-                    <span class="text-sm text-gray-700 leading-relaxed">${catatan}</span>
+
+            // Create bullet points for all items with kekosongan sub-bullets
+            const allBulletPoints = window.allCatatanData.map(item =>
+                `<div class="flex items-start space-x-4 py-3 px-2 hover:bg-gray-50 rounded-md transition-colors duration-150">
+                    <div class="flex-shrink-0 mt-1">
+                        <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm text-gray-900 leading-relaxed mb-2">${item.catatan}</p>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                            <span class="text-xs text-gray-600">Kekosongan:</span>
+                            <span class="text-xs font-semibold text-blue-600">${item.kekosongan}</span>
+                        </div>
+                    </div>
                 </div>`
             ).join('');
-            
+
             modalContent.innerHTML = allBulletPoints;
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -446,25 +534,25 @@
             const jawatanElement = document.getElementById('totalJawatan');
             const isiElement = document.getElementById('totalIsi');
             const kekosonganElement = document.getElementById('totalKekosongan');
-            
+
             if (jawatanElement) {
                 jawatanElement.textContent = totals.jawatan;
             } else {
                 console.error('totalJawatan element not found!');
             }
-            
+
             if (isiElement) {
                 isiElement.textContent = totals.isi;
             } else {
                 console.error('totalIsi element not found!');
             }
-            
+
             if (kekosonganElement) {
                 kekosonganElement.textContent = totals.kekosongan;
             } else {
                 console.error('totalKekosongan element not found!');
             }
-            
+
             // Display Catatan list for positions with kekosongan > 0
             if (totals.catatanWithKekosongan) {
                 displayCatatanList(totals.catatanWithKekosongan);
@@ -477,20 +565,24 @@
             const messageDiv = document.getElementById('message');
             const chartContainer = document.getElementById('chartContainer');
             const chartTitle = document.getElementById('chartTitle');
-            
+
             if (select.value === '') {
                 chartContainer.classList.add('hidden');
                 messageDiv.innerHTML = '';
                 catatanSelect.disabled = true;
                 catatanSelect.innerHTML = '<option value="">Pilih perjawatan...</option>';
                 // Reset totals when no category is selected
-                updateStatisticsPerjawatan({ jawatan: 0, isi: 0, kekosongan: 0 });
+                updateStatisticsPerjawatan({
+                    jawatan: 0,
+                    isi: 0,
+                    kekosongan: 0
+                });
                 return;
             }
-            
+
             // Enable catatan select when category is chosen
             catatanSelect.disabled = false;
-            
+
             // Don't show chart yet - wait for catatan selection
             chartContainer.classList.add('hidden');
             messageDiv.innerHTML = `
@@ -508,7 +600,7 @@
                     </div>
                 </div>
             `;
-            
+
             // Calculate and display totals for the selected category
             try {
                 const response = await fetch('b.php');
@@ -519,11 +611,19 @@
                     updateStatisticsPerjawatan(totals);
                 } else {
                     console.error('Error in data response:', data);
-                    updateStatisticsPerjawatan({ jawatan: 0, isi: 0, kekosongan: 0 });
+                    updateStatisticsPerjawatan({
+                        jawatan: 0,
+                        isi: 0,
+                        kekosongan: 0
+                    });
                 }
             } catch (error) {
                 console.error('Error calculating totals:', error);
-                updateStatisticsPerjawatan({ jawatan: 0, isi: 0, kekosongan: 0 });
+                updateStatisticsPerjawatan({
+                    jawatan: 0,
+                    isi: 0,
+                    kekosongan: 0
+                });
             }
 
             return;
@@ -549,7 +649,7 @@
 
                 // Filter data for the specific category
                 const categoryData = filterDataByCategory(data.data.perjawatan, select.value);
-                
+
                 if (categoryData.length === 0) {
                     messageDiv.innerHTML = `
                         <div class="bg-red-50/90 backdrop-blur-sm rounded-2xl shadow-lg border border-red-200/50 p-6 animate-fade-in">
@@ -575,7 +675,7 @@
                 // Create chart with the filtered data
                 createChart(categoryData, select.value);
                 chartContainer.classList.remove('hidden');
-                
+
                 // Show success message
                 messageDiv.innerHTML = `
                     <div class="bg-green-50/90 backdrop-blur-sm rounded-2xl shadow-lg border border-green-200/50 p-6 animate-fade-in">
@@ -644,11 +744,11 @@
 
             // Get the first record (assuming single record structure)
             const record = data[0];
-            
+
             // Extract j, i, k values for the category
             const categoryData = [];
             const suffixes = ['j', 'i', 'k'];
-            
+
             suffixes.forEach(suffix => {
                 const fieldName = `${fieldPrefix}_${suffix}`;
                 if (record.hasOwnProperty(fieldName)) {
@@ -667,7 +767,7 @@
 
         function createChart(data, categoryName) {
             const ctx = document.getElementById('dataChart').getContext('2d');
-            
+
             // Destroy existing chart if it exists
             if (chart) {
                 chart.destroy();
@@ -686,10 +786,9 @@
                 }
             });
             const values = data.map(item => item.value);
-            
+
             // Modern gradient colors
-            const gradientColors = [
-                {
+            const gradientColors = [{
                     bg: 'rgba(14, 165, 233, 0.8)',
                     border: 'rgba(14, 165, 233, 1)',
                     gradient: ['rgba(14, 165, 233, 0.8)', 'rgba(14, 165, 233, 0.4)']
@@ -797,17 +896,17 @@
                     }
                 }
             });
-            
+
             // Update data values in the red box
             updateDataValues(data);
         }
-        
+
         function updateDataValues(data) {
             // Initialize values
             let jawatanValue = 0;
             let isiValue = 0;
             let kekosonganValue = 0;
-            
+
             // Extract values from data
             data.forEach(item => {
                 const fieldName = item.name.toLowerCase();
@@ -819,7 +918,7 @@
                     kekosonganValue = item.value;
                 }
             });
-            
+
             // Update the display elements
             document.getElementById('jawatanValue').textContent = jawatanValue;
             document.getElementById('isiValue').textContent = isiValue;
@@ -829,10 +928,10 @@
         // Function to populate Catatan options based on selected category
         async function populateCatatanOptions(selectedCategory) {
             const catatanSelect = document.getElementById('catatanSelect');
-            
+
             // Clear existing options except the first placeholder
             catatanSelect.innerHTML = '<option value="">Pilih perjawatan...</option>';
-            
+
             if (!selectedCategory) {
                 catatanSelect.disabled = true;
                 return;
@@ -848,7 +947,7 @@
 
                 // Get unique Catatan values from the data
                 const catatanValues = new Set();
-                
+
                 if (data.data && data.data.perjawatan && data.data.perjawatan.length > 0) {
                     data.data.perjawatan.forEach(record => {
                         // Look for catatan fields in the record
@@ -892,14 +991,14 @@
             const messageDiv = document.getElementById('message');
             const chartContainer = document.getElementById('chartContainer');
             const chartTitle = document.getElementById('chartTitle');
-            
+
             const selectedCategory = categorySelect.value;
             const selectedCatatan = catatanSelect.value;
-            
+
             // Hide chart if either category or catatan is not selected
             if (!selectedCategory || !selectedCatatan) {
                 chartContainer.classList.add('hidden');
-                
+
                 if (!selectedCategory) {
                     messageDiv.innerHTML = `
                         <div class="bg-yellow-50/90 backdrop-blur-sm rounded-2xl shadow-lg border border-yellow-200/50 p-6 animate-fade-in">
@@ -940,7 +1039,19 @@
             messageDiv.innerHTML = `
                 <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-accent-200/50 p-6 animate-fade-in">
                     <div class="flex items-center justify-center space-x-3">
-                        <div class="animate-spin rounded-full h-6 w-6 border-2 border-primary-500 border-t-transparent"></div>
+                        <div role='status' aria-label='loading'> 
+                            <svg class='w-6 h-6 stroke-indigo-600 animate-spin' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'> 
+                                <g clip-path='url(#clip0_9023_61563)'> 
+                                    <path d='M14.6437 2.05426C11.9803 1.2966 9.01686 1.64245 6.50315 3.25548C1.85499 6.23817 0.504864 12.4242 3.48756 17.0724C6.47025 21.7205 12.6563 23.0706 17.3044 20.088C20.4971 18.0393 22.1338 14.4793 21.8792 10.9444' stroke='currentColor' stroke-width='1.4' stroke-linecap='round' class='my-path'></path> 
+                                </g> 
+                                <defs> 
+                                    <clipPath id='clip0_9023_61563'> 
+                                        <rect width='24' height='24' fill='white'></rect> 
+                                    </clipPath> 
+                                </defs> 
+                            </svg> 
+                            <span class='sr-only'>Loading...</span> 
+                        </div>
                         <span class="text-accent-700 font-medium">Loading filtered data analytics...</span>
                     </div>
                 </div>
@@ -957,7 +1068,7 @@
 
                 // Filter data by both category and catatan
                 const filteredData = filterDataByCategoryAndCatatan(data.data.perjawatan, selectedCategory, selectedCatatan);
-                
+
                 if (filteredData.length === 0) {
                     messageDiv.innerHTML = `
                         <div class="bg-yellow-50/90 backdrop-blur-sm rounded-2xl shadow-lg border border-yellow-200/50 p-6 animate-fade-in">
@@ -983,7 +1094,7 @@
                 // Create chart with the filtered data
                 createChart(filteredData, `${selectedCategory} - ${selectedCatatan}`);
                 chartContainer.classList.remove('hidden');
-                
+
                 // Show success message
                 messageDiv.innerHTML = `
                     <div class="bg-green-50/90 backdrop-blur-sm rounded-2xl shadow-lg border border-green-200/50 p-6 animate-fade-in">
@@ -1024,7 +1135,11 @@
                 `;
                 chartContainer.classList.add('hidden');
                 // Reset totals on error
-                updateStatisticsPerjawatan({ jawatan: 0, isi: 0, kekosongan: 0 });
+                updateStatisticsPerjawatan({
+                    jawatan: 0,
+                    isi: 0,
+                    kekosongan: 0
+                });
             }
         }
 
@@ -1037,9 +1152,9 @@
             // Find records that match the catatan value
             const matchingRecords = data.filter(record => {
                 // Check if any catatan field matches the selected catatan
-                return Object.keys(record).some(key => 
-                    key.toLowerCase().includes('catatan') && 
-                    record[key] && 
+                return Object.keys(record).some(key =>
+                    key.toLowerCase().includes('catatan') &&
+                    record[key] &&
                     record[key].trim() === catatan
                 );
             });
@@ -1074,7 +1189,7 @@
             // Extract data from matching records
             const categoryData = [];
             const suffixes = ['j', 'i', 'k'];
-            
+
             matchingRecords.forEach((record, index) => {
                 suffixes.forEach(suffix => {
                     const fieldName = `${fieldPrefix}_${suffix}`;
@@ -1096,90 +1211,98 @@
         function downloadChart() {
             const chartContainer = document.getElementById('chartContainer');
             const exportButton = document.getElementById('exportButton');
-            
-            if (!chartContainer || chartContainer.classList.contains('hidden')) {
+            const chartCanvas = document.getElementById('dataChart');
+
+            if (!chartContainer || chartContainer.classList.contains('hidden') || !chart) {
                 alert('Please select a category and catatan to generate a chart first.');
                 return;
             }
-            
-            // Hide the export button before taking screenshot
+
+            // Create a temporary container for export
+            const tempDiv = document.createElement('div');
+            tempDiv.style.position = 'absolute';
+            tempDiv.style.left = '-9999px';
+            tempDiv.style.background = 'none';
+            tempDiv.style.padding = '40px';
+            tempDiv.style.width = chartContainer.offsetWidth + 'px';
+
+            // Clone the container
+            const clone = chartContainer.cloneNode(true);
+
+            // Find and replace the canvas in the clone
+            const clonedCanvas = clone.querySelector('#dataChart');
+            if (clonedCanvas) {
+                const newCanvas = document.createElement('canvas');
+                newCanvas.width = chartCanvas.width;
+                newCanvas.height = chartCanvas.height;
+                newCanvas.style.width = chartCanvas.style.width;
+                newCanvas.style.height = chartCanvas.style.height;
+
+                const newCtx = newCanvas.getContext('2d');
+                newCtx.drawImage(chartCanvas, 0, 0);
+
+                clonedCanvas.parentNode.replaceChild(newCanvas, clonedCanvas);
+                newCanvas.id = 'dataChart';
+            }
+
+            // Remove export button from clone
+            const clonedButton = clone.querySelector('#exportButton');
+            if (clonedButton) {
+                clonedButton.remove();
+            }
+
+            // Remove backdrop filters from clone
+            const allElements = clone.querySelectorAll('*');
+            allElements.forEach(element => {
+                element.style.backdropFilter = 'none';
+                element.style.webkitBackdropFilter = 'none';
+
+                if (element.classList.contains('bg-white/90') ||
+                    element.classList.contains('bg-white/80')) {
+                    element.style.backgroundColor = '#ffffff';
+                }
+            });
+
+            tempDiv.appendChild(clone);
+            document.body.appendChild(tempDiv);
+
+            // Hide original export button
             if (exportButton) {
                 exportButton.style.display = 'none';
             }
-            
-            // Temporarily disable backdrop filters to prevent dark tint
-            const elementsWithBackdrop = chartContainer.querySelectorAll('[class*="backdrop-blur"]');
-            const originalBackdropFilters = [];
-            
-            elementsWithBackdrop.forEach((element, index) => {
-                originalBackdropFilters[index] = element.style.backdropFilter;
-                element.style.backdropFilter = 'none';
-            });
-            
-            // Also handle elements with inline backdrop-filter styles
-            const allElements = chartContainer.querySelectorAll('*');
-            const originalInlineBackdrops = [];
-            
-            allElements.forEach((element, index) => {
-                const computedStyle = window.getComputedStyle(element);
-                if (computedStyle.backdropFilter && computedStyle.backdropFilter !== 'none') {
-                    originalInlineBackdrops[index] = element.style.backdropFilter;
-                    element.style.backdropFilter = 'none';
-                }
-            });
-            
-            // Use html2canvas to capture the entire container
-            html2canvas(chartContainer, {
+
+            // Capture with html2canvas
+            html2canvas(tempDiv, {
                 backgroundColor: '#ffffff',
-                scale: 2, // Higher quality
+                scale: 2,
                 useCORS: true,
-                allowTaint: true,
-                scrollX: 0,
-                scrollY: 0,
-                width: chartContainer.scrollWidth,
-                height: chartContainer.scrollHeight
+                logging: false
             }).then(function(canvas) {
-                // Restore backdrop filters
-                elementsWithBackdrop.forEach((element, index) => {
-                    element.style.backdropFilter = originalBackdropFilters[index] || '';
-                });
-                
-                allElements.forEach((element, index) => {
-                    if (originalInlineBackdrops[index] !== undefined) {
-                        element.style.backdropFilter = originalInlineBackdrops[index] || '';
-                    }
-                });
-                
-                // Show the export button again after screenshot
+                // Cleanup
+                document.body.removeChild(tempDiv);
+
                 if (exportButton) {
                     exportButton.style.display = 'flex';
                 }
-                
-                // Create download link
+
+                // Download
                 const link = document.createElement('a');
-                link.download = 'hospital-data-dashboard.png';
-                link.href = canvas.toDataURL('image/png');
+                const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+                link.download = `hospital-data-dashboard-${timestamp}.png`;
+                link.href = canvas.toDataURL('image/png', 1.0);
                 link.click();
             }).catch(function(error) {
-                // Restore backdrop filters even on error
-                elementsWithBackdrop.forEach((element, index) => {
-                    element.style.backdropFilter = originalBackdropFilters[index] || '';
-                });
-                
-                allElements.forEach((element, index) => {
-                    if (originalInlineBackdrops[index] !== undefined) {
-                        element.style.backdropFilter = originalInlineBackdrops[index] || '';
-                    }
-                });
-                
-                // Show the export button again even if there's an error
+                document.body.removeChild(tempDiv);
+
                 if (exportButton) {
                     exportButton.style.display = 'flex';
                 }
-                console.error('Error capturing screenshot:', error);
-                alert('Failed to capture screenshot. Please try again.');
+                console.error('Error:', error);
+                alert('Failed to export. Please try again.');
             });
         }
+
+
 
         // Add keyboard navigation
         document.addEventListener('keydown', function(e) {
@@ -1200,19 +1323,19 @@
             });
 
             // Handle Select2 change event
-            $('#dataSelect').on('select2:select', function (e) {
+            $('#dataSelect').on('select2:select', function(e) {
                 const selectedCategory = e.params.data.text;
                 populateCatatanOptions(selectedCategory);
                 loadChart();
             });
 
             // Handle Select2 clear event
-            $('#dataSelect').on('select2:clear', function (e) {
+            $('#dataSelect').on('select2:clear', function(e) {
                 // Clear catatan options and disable it
                 const catatanSelect = document.getElementById('catatanSelect');
                 catatanSelect.innerHTML = '<option value="">Pilih perjawatan...</option>';
                 catatanSelect.disabled = true;
-                
+
                 if (chart) {
                     chart.destroy();
                     chart = null;
@@ -1232,12 +1355,12 @@
             });
 
             // Handle Catatan Select2 change event
-            $('#catatanSelect').on('select2:select', function (e) {
+            $('#catatanSelect').on('select2:select', function(e) {
                 loadChartWithCatatan();
             });
 
             // Handle Catatan Select2 clear event
-            $('#catatanSelect').on('select2:clear', function (e) {
+            $('#catatanSelect').on('select2:clear', function(e) {
                 if (chart) {
                     chart.destroy();
                     chart = null;
@@ -1344,14 +1467,14 @@
                     </svg>
                 </button>
             </div>
-            
+
             <!-- Modal Content -->
             <div class="flex-1 overflow-y-auto p-6">
                 <div id="catatanModalContent" class="space-y-2">
                     <!-- Content will be populated by JavaScript -->
                 </div>
             </div>
-            
+
             <!-- Modal Footer -->
             <div class="flex justify-end p-6 border-t border-gray-200">
                 <button onclick="closeCatatanPopup()" class="px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 font-medium">
@@ -1362,4 +1485,5 @@
     </div>
 
 </body>
+
 </html>
