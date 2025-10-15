@@ -6,40 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staffing Data Analytics Dashboard</title>
     
-    <!-- Open Graph Meta Tags for Social Media Preview -->
-    <meta property="og:title" content="Staffing Data Analytics Dashboard - JKN Profiling">
-    <meta property="og:description" content="Interactive dashboard for analyzing hospital staffing data, positions, and vacancies across healthcare institutions.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="http://profile.kdh.moh.gov.my/perjawatan/">
-    <meta property="og:image" content="http://profile.kdh.moh.gov.my/perjawatan/preview-image-whatsapp.png">
-    <meta property="og:image:secure_url" content="https://profile.kdh.moh.gov.my/perjawatan/preview-image-whatsapp.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1125">
-    <meta property="og:image:height" content="600">
-    <meta property="og:image:alt" content="Staffing Data Analytics Dashboard Preview">
-    <meta property="og:site_name" content="JKN Profiling Dashboard">
-    <meta property="og:locale" content="en_US">
-    <meta property="fb:app_id" content="1234567890123456">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@jkn_profiling">
-    <meta name="twitter:creator" content="@jkn_profiling">
-    <meta name="twitter:title" content="Staffing Data Analytics Dashboard - JKN Profiling">
-    <meta name="twitter:description" content="Interactive dashboard for analyzing hospital staffing data, positions, and vacancies across healthcare institutions.">
-    <meta name="twitter:image" content="http://profile.kdh.moh.gov.my/perjawatan/preview-image-whatsapp.png">
-    <meta name="twitter:image:alt" content="Staffing Data Analytics Dashboard Preview">
-    
-    <!-- WhatsApp Specific Optimizations -->
-    <meta property="og:updated_time" content="<?php echo date('c'); ?>">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="http://profile.kdh.moh.gov.my/perjawatan/">
-    
-    <!-- Additional Meta Tags -->
-    <meta name="description" content="Interactive dashboard for analyzing hospital staffing data, positions, and vacancies across healthcare institutions.">
-    <meta name="keywords" content="healthcare, staffing, analytics, dashboard, hospital, JKN, profiling">
-    <meta name="author" content="JKN Profiling Team">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -137,7 +103,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-accent-900">Hospital Data Analytics</h1>
+                        <h1 class="text-xl font-bold text-accent-900">Staffing Data Analytics</h1>
                         <p class="text-sm text-accent-600">Real-time visualization dashboard</p>
                     </div>
                 </div>
@@ -169,23 +135,44 @@
             </div>
 
             <div class="space-y-4">
+                <!-- Data Source Selection -->
+                <label for="dataSourceSelect" class="block text-sm font-semibold text-accent-700">Pilih Sumber Data</label>
+                <div class="relative">
+                    <select id="dataSourceSelect" onchange="changeDataSource()" class="w-full p-4 pr-12 border-2 border-accent-200 rounded-xl text-base bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all duration-300 appearance-none cursor-pointer hover:border-accent-300">
+                        <option value="hospital">🏥 Hospital</option>
+                        <option value="pkd">🏢 PKD</option>
+                        <option value="pkpd">🏛️ PKPD</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                        <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spreadsheet Selection (for multiple sources like PKD) -->
+            <div id="sheetSelectContainer" class="space-y-4 hidden">
+                <label for="sheetSelect" class="block text-sm font-semibold text-accent-700">Pilih Spreadsheet</label>
+                <div class="relative">
+                    <select id="sheetSelect" onchange="loadChart()" class="w-full p-4 pr-12 border-2 border-accent-200 rounded-xl text-base bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all duration-300 appearance-none cursor-pointer hover:border-accent-300">
+                        <option value="">Pilih Spreadsheet...</option>
+                        <!-- Options will be loaded dynamically -->
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                        <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
                 <label for="dataSelect" class="block text-sm font-semibold text-accent-700">Pilih PTJ</label>
                 <div class="relative">
                     <select id="dataSelect" onchange="loadChart()" class="w-full p-4 pr-12 border-2 border-accent-200 rounded-xl text-base bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all duration-300 appearance-none cursor-pointer hover:border-accent-300">
                         <option value="">Pilih PTJ...</option>
-                        <option value="PEJ TPKN (KA) JKN">🏥 PEJ TPKN (KA) JKN</option>
-                        <option value="PKD KOTA STAR">⭐ PKD KOTA STAR</option>
-                        <option value="PKD KUALA MUDA">🌊 PKD KUALA MUDA</option>
-                        <option value="PKD KULIM">🏔️ PKD KULIM</option>
-                        <option value="PKD KUBANG PASU">🌾 PKD KUBANG PASU</option>
-                        <option value="PKD BALING">🏞️ PKD BALING</option>
-                        <option value="PKD LANGKAWI">🏝️ PKD LANGKAWI</option>
-                        <option value="PKD YAN">🌸 PKD YAN</option>
-                        <option value="PKD PENDANG">🌿 PKD PENDANG</option>
-                        <option value="PKD SIK">🌲 PKD SIK</option>
-                        <option value="PKD BANDAR BAHARU">🏙️ PKD BANDAR BAHARU</option>
-                        <option value="VECTOR NEGERI">📊 VECTOR NEGERI</option>
-                        <option value="PKPMA BUKIT KAYU HITAM">⛰️ PKPMA BUKIT KAYU HITAM</option>
+                        <!-- Options will be loaded dynamically -->
                     </select>
                     <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                         <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -346,27 +333,157 @@
 
     <script>
         let chart = null;
+        let currentDataSource = 'hospital';
+        let ptjOptions = [];
+        let categoryFieldMap = {};
+        let currentConfig = null; // Store current configuration data
+
+        // Function to load configuration based on data source
+        async function loadConfiguration(dataSource) {
+            try {
+                const response = await fetch(`config.php?source=${dataSource}`);
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    currentConfig = result.data; // Store the full configuration
+                    ptjOptions = result.data.ptj_options;
+                    categoryFieldMap = result.data.category_field_map;
+                    
+                    // Update PTJ dropdown
+                    updatePTJDropdown();
+                    
+                    // Handle spreadsheet selector visibility
+                    updateSpreadsheetSelector();
+                    
+                    return true;
+                } else {
+                    throw new Error(result.message || 'Failed to load configuration');
+                }
+            } catch (error) {
+                console.error('Error loading configuration:', error);
+                showMessage('Error loading configuration: ' + error.message, 'error');
+                return false;
+            }
+        }
+
+        // Function to update spreadsheet selector based on current configuration
+        function updateSpreadsheetSelector() {
+            const sheetSelectContainer = document.getElementById('sheetSelectContainer');
+            const sheetSelect = document.getElementById('sheetSelect');
+            
+            if (currentConfig && currentConfig.has_multiple_sources && currentConfig.sheets_urls) {
+                // Show spreadsheet selector for multiple sources
+                sheetSelectContainer.classList.remove('hidden');
+                sheetSelect.innerHTML = '<option value="">Pilih Spreadsheet...</option>';
+                
+                currentConfig.sheets_urls.forEach((sheet, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = `📊 ${sheet.name}`;
+                    option.title = sheet.description; // Add tooltip with description
+                    sheetSelect.appendChild(option);
+                });
+            } else {
+                // Hide spreadsheet selector for single sources
+                sheetSelectContainer.classList.add('hidden');
+                sheetSelect.innerHTML = '<option value="">Pilih Spreadsheet...</option>';
+            }
+        }
+
+        // Function to update PTJ dropdown options
+        function updatePTJDropdown() {
+            const dataSelect = document.getElementById('dataSelect');
+            dataSelect.innerHTML = '<option value="">Pilih PTJ...</option>';
+            
+            ptjOptions.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.value = option.value;
+                optionElement.textContent = option.display;
+                dataSelect.appendChild(optionElement);
+            });
+        }
+
+        // Function to handle data source change
+        async function changeDataSource() {
+            const dataSourceSelect = document.getElementById('dataSourceSelect');
+            const newDataSource = dataSourceSelect.value;
+            
+            if (newDataSource !== currentDataSource) {
+                currentDataSource = newDataSource;
+                
+                // Show loading message
+                showMessage('Loading configuration...', 'info');
+                
+                // Load new configuration
+                const success = await loadConfiguration(currentDataSource);
+                
+                if (success) {
+                    // Clear current chart and reset selections
+                    if (chart) {
+                        chart.destroy();
+                        chart = null;
+                    }
+                    
+                    document.getElementById('dataSelect').value = '';
+                    document.getElementById('sheetSelect').value = '';
+                    document.getElementById('catatanSelect').innerHTML = '<option value="">Pilih perjawatan...</option>';
+                    document.getElementById('catatanSelect').disabled = true;
+                    
+                    showMessage('Configuration loaded successfully. Please select options to view data.', 'success');
+                }
+            }
+        }
+
+        // Function to show messages to the user
+        function showMessage(message, type = 'info') {
+            const messageDiv = document.getElementById('message');
+            if (!messageDiv) return;
+            
+            let bgColor, textColor, icon;
+            
+            switch (type) {
+                case 'success':
+                    bgColor = 'bg-green-50/90';
+                    textColor = 'text-green-800';
+                    icon = `<svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>`;
+                    break;
+                case 'error':
+                    bgColor = 'bg-red-50/90';
+                    textColor = 'text-red-800';
+                    icon = `<svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>`;
+                    break;
+                case 'info':
+                default:
+                    bgColor = 'bg-blue-50/90';
+                    textColor = 'text-blue-800';
+                    icon = `<svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>`;
+                    break;
+            }
+            
+            messageDiv.innerHTML = `
+                <div class="${bgColor} backdrop-blur-sm rounded-2xl shadow-lg border border-${type === 'success' ? 'green' : type === 'error' ? 'red' : 'blue'}-200/50 p-6 animate-fade-in">
+                    <div class="flex items-center space-x-3">
+                        <div class="flex-shrink-0">
+                            ${icon}
+                        </div>
+                        <div>
+                            <p class="text-sm ${textColor} font-medium">${message}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
         // Function to calculate totals across all records for a category
         function calculateCategoryTotals(data, category) {
-            const categoryFieldMap = {
-                'PEJ TPKN (KA) JKN': 'ptpknka',
-                'PKD KOTA STAR': 'pkdks',
-                'PKD KUALA MUDA': 'pkdkm',
-                'PKD KULIM': 'pkdk',
-                'PKD KUBANG PASU': 'pkdkp',
-                'PKD BALING': 'pkdb',
-                'PKD LANGKAWI': 'pkdl',
-                'PKD YAN': 'pkdy',
-                'PKD PENDANG': 'pkdp',
-                'PKD SIK': 'pkds',
-                'PKD BANDAR BAHARU': 'pkdbb',
-                'VECTOR NEGERI': 'vn',
-                'PKPMA BUKIT KAYU HITAM': 'pkpmabkh'
-            };
-
             const fieldPrefix = categoryFieldMap[category];
-
+            
             if (!fieldPrefix || !data || data.length === 0) {
                 return {
                     jawatan: 0,
@@ -561,6 +678,7 @@
 
         async function loadChart() {
             const select = document.getElementById('dataSelect');
+            const sheetSelect = document.getElementById('sheetSelect');
             const catatanSelect = document.getElementById('catatanSelect');
             const messageDiv = document.getElementById('message');
             const chartContainer = document.getElementById('chartContainer');
@@ -580,8 +698,36 @@
                 return;
             }
 
+            // Check if we need a sheet selection for multiple sources
+            if (currentConfig && currentConfig.has_multiple_sources) {
+                if (sheetSelect.value === '') {
+                    chartContainer.classList.add('hidden');
+                    messageDiv.innerHTML = `
+                        <div class="bg-yellow-50/90 backdrop-blur-sm rounded-2xl shadow-lg border border-yellow-200/50 p-6 animate-fade-in">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0">
+                                    <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-yellow-800">Spreadsheet Selection Required</h3>
+                                    <p class="text-sm text-yellow-600 mt-1">Please select a spreadsheet to view data.</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    catatanSelect.disabled = true;
+                    catatanSelect.innerHTML = '<option value="">Pilih perjawatan...</option>';
+                    return;
+                }
+            }
+
             // Enable catatan select when category is chosen
             catatanSelect.disabled = false;
+
+            // Populate catatan options for the selected category
+            await populateCatatanOptions(select.value);
 
             // Don't show chart yet - wait for catatan selection
             chartContainer.classList.add('hidden');
@@ -603,7 +749,13 @@
 
             // Calculate and display totals for the selected category
             try {
-                const response = await fetch('b.php');
+                // Build URL with sheet_index if needed
+                let url = `b.php?source=${currentDataSource}`;
+                if (currentConfig && currentConfig.has_multiple_sources && sheetSelect.value !== '') {
+                    url += `&sheet_index=${sheetSelect.value}`;
+                }
+                
+                const response = await fetch(url);
                 const data = await response.json();
 
                 if (data.status === 'success' && data.data && data.data.perjawatan) {
@@ -640,7 +792,16 @@
             chartContainer.classList.add('hidden');
 
             try {
-                const response = await fetch('b.php');
+                // Build URL with sheet_index if needed
+                let url = `b.php?source=${currentDataSource}`;
+                if (currentConfig && currentConfig.has_multiple_sources) {
+                    const sheetSelect = document.getElementById('sheetSelect');
+                    if (sheetSelect.value !== '') {
+                        url += `&sheet_index=${sheetSelect.value}`;
+                    }
+                }
+                
+                const response = await fetch(url);
                 const data = await response.json();
 
                 if (data.status === 'error') {
@@ -938,7 +1099,16 @@
             }
 
             try {
-                const response = await fetch('b.php');
+                // Build URL with sheet_index if needed
+                let url = `b.php?source=${currentDataSource}`;
+                if (currentConfig && currentConfig.has_multiple_sources) {
+                    const sheetSelect = document.getElementById('sheetSelect');
+                    if (sheetSelect.value !== '') {
+                        url += `&sheet_index=${sheetSelect.value}`;
+                    }
+                }
+                
+                const response = await fetch(url);
                 const data = await response.json();
 
                 if (data.status === 'error') {
@@ -1059,7 +1229,7 @@
             chartContainer.classList.add('hidden');
 
             try {
-                const response = await fetch('b.php');
+                const response = await fetch(`b.php?source=${currentDataSource}`);
                 const data = await response.json();
 
                 if (data.status === 'error') {
@@ -1164,25 +1334,10 @@
             }
 
             // Now filter by category for the matching records
-            const categoryFieldMap = {
-                'PEJ TPKN (KA) JKN': 'ptpknka',
-                'PKD KOTA STAR': 'pkdks',
-                'PKD KUALA MUDA': 'pkdkm',
-                'PKD KULIM': 'pkdk',
-                'PKD KUBANG PASU': 'pkdkp',
-                'PKD BALING': 'pkdb',
-                'PKD LANGKAWI': 'pkdl',
-                'PKD YAN': 'pkdy',
-                'PKD PENDANG': 'pkdp',
-                'PKD SIK': 'pkds',
-                'PKD BANDAR BAHARU': 'pkdbb',
-                'VECTOR NEGERI': 'vn',
-                'PKPMA BUKIT KAYU HITAM': 'pkpmabkh',
-                'Catatan': 'catatan'
-            };
-
+            // Use the dynamic categoryFieldMap loaded from config
             const fieldPrefix = categoryFieldMap[category];
             if (!fieldPrefix) {
+                console.error('No field prefix found for category:', category);
                 return [];
             }
 
@@ -1483,6 +1638,28 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Initialize the application on page load
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Add event listeners
+            document.getElementById('dataSourceSelect').addEventListener('change', function() {
+                currentDataSource = this.value;
+                loadConfiguration(currentDataSource);
+            });
+            
+            document.getElementById('dataSelect').addEventListener('change', loadChart);
+            document.getElementById('sheetSelect').addEventListener('change', loadChart);
+            document.getElementById('catatanSelect').addEventListener('change', loadChartWithCatatan);
+            document.getElementById('exportButton').addEventListener('click', downloadChart);
+            
+            // Load default configuration (Hospital)
+            await loadConfiguration(currentDataSource);
+            
+            // Show welcome message
+            showMessage('Application loaded successfully. Please select a PTJ to view data.', 'success');
+        });
+    </script>
 
 </body>
 

@@ -1,0 +1,43 @@
+{
+  "name": "PKD",
+  "display_name": "🏢 PKD",
+  "sheets_urls": [
+    {
+      "name": "PKD Main Data",
+      "url": "https://docs.google.com/spreadsheets/d/1XmjdwQO0wmyq0yd-V2Ko0nUE1-ZBzwWxg6Lxcgpjvmo/export?format=csv&gid=93150126",
+      "description": "Primary PKD data source"
+    },
+    {
+      "name": "PKD Staff Data",
+      "url": "https://docs.google.com/spreadsheets/d/1XmjdwQO0wmyq0yd-V2Ko0nUE1-ZBzwWxg6Lxcgpjvmo/export?format=csv&gid=93150126",
+      "description": "PKD staff information"
+    },
+    {
+      "name": "PKD Budget Data",
+      "url": "https://docs.google.com/spreadsheets/d/1XmjdwQO0wmyq0yd-V2Ko0nUE1-ZBzwWxg6Lxcgpjvmo/export?format=csv&gid=93150126",
+      "description": "PKD budget allocation"
+    }
+  ],
+  "ptj_options": [
+    {
+      "value": "PKD ALOR SETAR",
+      "display": "🏢 PKD ALOR SETAR",
+      "field_key": "pkdas"
+    },
+    {
+      "value": "PKD KUALA KEDAH",
+      "display": "🌊 PKD KUALA KEDAH",
+      "field_key": "pkdkk"
+    },
+    {
+      "value": "PKD POKOK SENA",
+      "display": "🌳 PKD POKOK SENA",
+      "field_key": "pkdps"
+    },
+    {
+      "value": "PKD KOTA SETAR",
+      "display": "⭐ PKD KOTA SETAR",
+      "field_key": "pkdkst"
+    }
+  ]
+}

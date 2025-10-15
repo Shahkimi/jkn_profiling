@@ -1,0 +1,22 @@
+{
+  "name": "PKPD",
+  "display_name": "🏛️ PKPD",
+  "sheets_url": "https://docs.google.com/spreadsheets/d/1XmjdwQO0wmyq0yd-V2Ko0nUE1-ZBzwWxg6Lxcgpjvmo/export?format=csv&gid=93150126",
+  "ptj_options": [
+    {
+      "value": "PKPD UTARA",
+      "display": "🏔️ PKPD UTARA",
+      "field_key": "pkpdutara"
+    },
+    {
+      "value": "PKPD SELATAN",
+      "display": "🌴 PKPD SELATAN",
+      "field_key": "pkpdselatan"
+    },
+    {
+      "value": "PKPD TENGAH",
+      "display": "🏙️ PKPD TENGAH",
+      "field_key": "pkpdtengah"
+    }
+  ]
+}

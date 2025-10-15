@@ -1,9 +1,50 @@
 <?php
 header('Content-Type: application/json');
 
+// Load JSON configuration
+function loadJsonConfig($dataSource) {
+    $configFile = __DIR__ . "/config/{$dataSource}.json";
+    
+    if (!file_exists($configFile)) {
+        throw new Exception("Configuration file not found for data source: {$dataSource}");
+    }
+    
+    $jsonContent = file_get_contents($configFile);
+    $config = json_decode($jsonContent, true);
+    
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception("Invalid JSON in configuration file: " . json_last_error_msg());
+    }
+    
+    return $config;
+}
+
 try {
-    // URL for CSV export of your Google Sheets (replace gid if needed)
-    $sheetUrl = "https://docs.google.com/spreadsheets/d/1qhDBYxcDzGT7_3LvLNqHPTW_sA0HcAiSBnDquoHhYgM/export?format=csv&gid=1060536213";
+    // Get data source from request
+    $dataSource = $_GET['source'] ?? 'hospital';
+    $sheetIndex = $_GET['sheet_index'] ?? 0; // For multiple sheets sources
+    
+    // Load configuration from JSON file
+    $config = loadJsonConfig($dataSource);
+    
+    // Determine which spreadsheet URL to use
+    $sheetUrl = '';
+    
+    if (isset($config['sheets_urls']) && is_array($config['sheets_urls'])) {
+        // Multiple spreadsheet sources (like PKD)
+        if (isset($config['sheets_urls'][$sheetIndex])) {
+            $sheetUrl = $config['sheets_urls'][$sheetIndex]['url'];
+        } else {
+            throw new Exception("Invalid sheet index: {$sheetIndex}");
+        }
+    } else {
+        // Single spreadsheet source (like Hospital, PKPD)
+        $sheetUrl = $config['sheets_url'] ?? '';
+    }
+    
+    if (empty($sheetUrl)) {
+        throw new Exception("No spreadsheet URL configured for data source: " . $dataSource);
+    }
 
     // Context with timeout and user-agent for fetching
     $context = stream_context_create([

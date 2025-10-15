@@ -1,0 +1,57 @@
+{
+  "name": "Hospital",
+  "display_name": "🏥 Hospital",
+  "sheets_url": "https://docs.google.com/spreadsheets/d/1XmjdwQO0wmyq0yd-V2Ko0nUE1-ZBzwWxg6Lxcgpjvmo/export?format=csv&gid=93150126",
+  "ptj_options": [
+    {
+      "value": "HOSPITAL YAN",
+      "display": "🏥 HOSPITAL YAN",
+      "field_key": "hyan"
+    },
+    {
+      "value": "HOSPITAL SULTANAH MALIHA",
+      "display": "🏥 HOSPITAL SULTANAH MALIHA",
+      "field_key": "hsm"
+    },
+    {
+      "value": "HOSPITAL JITRA",
+      "display": "🏥 HOSPITAL JITRA",
+      "field_key": "hjitra"
+    },
+    {
+      "value": "HOSPITAL SULTANAH BAHIYAH",
+      "display": "🏥 HOSPITAL SULTANAH BAHIYAH",
+      "field_key": "hsb"
+    },
+    {
+      "value": "HOSPITAL SULTAN ABDUL HALIM",
+      "display": "🏥 HOSPITAL SULTAN ABDUL HALIM",
+      "field_key": "hsah"
+    },
+    {
+      "value": "HOSPITAL KULIM",
+      "display": "🏥 HOSPITAL KULIM",
+      "field_key": "hkulim"
+    },
+    {
+      "value": "HOSPITAL PENDANG",
+      "display": "🏥 HOSPITAL PENDANG",
+      "field_key": "hpendang"
+    },
+    {
+      "value": "HOSPITAL KUALA NERANG",
+      "display": "🏥 HOSPITAL KUALA NERANG",
+      "field_key": "hkn"
+    },
+    {
+      "value": "HOSPITAL SIK",
+      "display": "🏥 HOSPITAL SIK",
+      "field_key": "hsik"
+    },
+    {
+      "value": "HOSPITAL BALING",
+      "display": "🏥 HOSPITAL BALING",
+      "field_key": "hbaling"
+    }
+  ]
+}
