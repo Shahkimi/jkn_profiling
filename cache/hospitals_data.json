@@ -1,5 +1,5 @@
 {
-    "timestamp": 1760401957,
+    "timestamp": 1761799005,
     "hospitals": [
         {
             "PTJ": "Hospital Sultanah Maliha",
@@ -40,7 +40,19 @@
             "BOR": "74.84 %",
             "ALOS": "3.61",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "Parking\nSurau\nVending Machine\nCoffee Bot\nCafe\nAsrama Jururawat\nPerpustakaan",
-            "Kluster": "NA"
+            "Kluster": "NA",
+            "Doktor": "10",
+            "DRC": "20",
+            "Jururawat": "30",
+            "JRC": "10",
+            "PPP": "50",
+            "PPPC": "20",
+            "Radiologi": "35",
+            "RC": "15",
+            "Fisoterapi": "15",
+            "FC": "2",
+            "Lain-lain": "100",
+            "LC": "38"
         },
         {
             "PTJ": "Hospital Sultanah Bahiyah",
@@ -81,7 +93,19 @@
             "BOR": "78.22 %",
             "ALOS": "4.82",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "Auditorium\nPusat Pendidikan Lanjutan\nBilik Seminar\nBilik Mesyuarat\nPerpustakaan\nSurau\nParking\nKafe\nMesin ATM\nVending Machine\nKedai Runcit\nKedai Bakeri\nKedai Kopi\nCourt Sukan",
-            "Kluster": "HOKKU"
+            "Kluster": "HOKKU",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         },
         {
             "PTJ": "Hospital Alor Setar",
@@ -122,7 +146,19 @@
             "BOR": "Jumlah katil adalah termasuk HAS dan HSB",
             "ALOS": "Jumlah katil adalah termasuk HAS dan HSB",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "Bilik Seminar\nBilik Mesyuarat\nSurau\nParking\nKedai Runcit",
-            "Kluster": "NA"
+            "Kluster": "NA",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         },
         {
             "PTJ": "Hospital Pendang",
@@ -163,7 +199,19 @@
             "BOR": "75.28 %",
             "ALOS": "3.68",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "Bilik Persidangan \nBilik Seminar\nPerpustakaan\nSurau\nParking\nCafe\nTaman Permainan",
-            "Kluster": "HOKKU"
+            "Kluster": "HOKKU",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         },
         {
             "PTJ": "Hospital Yan",
@@ -204,7 +252,19 @@
             "BOR": "57.90 %",
             "ALOS": "3.9",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "Surau\nParking\nTaman Permainan",
-            "Kluster": "HOKTEN"
+            "Kluster": "HOKTEN",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         },
         {
             "PTJ": "Hospital Sultan Abdul Halim",
@@ -245,7 +305,19 @@
             "BOR": "91.43 %",
             "ALOS": "4.62",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "",
-            "Kluster": "HOKTEN"
+            "Kluster": "HOKTEN",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         },
         {
             "PTJ": "Hospital Sungai Petani (HSP)",
@@ -286,7 +358,19 @@
             "BOR": "Rujuk Data HSAH di atas.",
             "ALOS": "Rujuk Data HSAH di atas.",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "",
-            "Kluster": "NA"
+            "Kluster": "NA",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         },
         {
             "PTJ": "Hospital Sik",
@@ -327,7 +411,19 @@
             "BOR": "67.00 %",
             "ALOS": "4.72",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "Surau pelawat, tempat letak kenderaan awam, Kantin\/Kafe",
-            "Kluster": "HOKTEN"
+            "Kluster": "HOKTEN",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         },
         {
             "PTJ": "Hospital Baling",
@@ -368,7 +464,19 @@
             "BOR": "",
             "ALOS": "",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "",
-            "Kluster": "NA"
+            "Kluster": "NA",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         },
         {
             "PTJ": "Hospital Kulim",
@@ -409,7 +517,19 @@
             "BOR": "96.50 %",
             "ALOS": "4.2",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "1. Surau\n2. Kafe\n3. Parkir awam\n4. Mesin ATM\n5. Vending Machine\n6. HospiMart\n7. Court Sukan",
-            "Kluster": "NA"
+            "Kluster": "NA",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         },
         {
             "PTJ": "Hospital Kuala Nerang",
@@ -450,7 +570,19 @@
             "BOR": "63.08 %",
             "ALOS": "3.53",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "1. Balai Pelawat\n2. Kafe\n3. Parking awam\n4. Vending Machine\n5. Surau\n6. Asrama Jururawat\n7. Court Sukan",
-            "Kluster": "HOKKU"
+            "Kluster": "HOKKU",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         },
         {
             "PTJ": "Hospital Jitra",
@@ -491,7 +623,19 @@
             "BOR": "64.23 %",
             "ALOS": "2.73",
             "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "1. Surau\n2. Kafe\n3. Parkir awam\n4.Dewan Sinaran Minda\n5. Vending Machine\n6.Asrama Jururawat \n7. Court Sukan",
-            "Kluster": "HOKKU"
+            "Kluster": "HOKKU",
+            "Doktor": "",
+            "DRC": "",
+            "Jururawat": "",
+            "JRC": "",
+            "PPP": "",
+            "PPPC": "",
+            "Radiologi": "",
+            "RC": "",
+            "Fisoterapi": "",
+            "FC": "",
+            "Lain-lain": "",
+            "LC": ""
         }
     ]
 }
