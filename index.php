@@ -368,79 +368,57 @@ $hospital = [
     <title><?php echo $hospital['name'] ?? 'Hospital Information'; ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0284c7',
-                        secondary: '#0ea5e9',
-                        accent: '#06b6d4',
-                        medical: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0ea5e9 100%);
-        }
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .stat-number {
-            background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-    </style>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body class="bg-gradient-to-br from-gray-50 via-blue-50 to-cyan-50 min-h-screen">
 
 <!-- Hospital Selector -->
-<div class="bg-white shadow-md border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 py-4">
-        <div class="flex items-center gap-4">
-            <i class="fas fa-hospital-alt text-blue-600 text-xl"></i>
-            <label class="text-sm font-semibold text-gray-700">Select Hospital:</label>
-            <select onchange="window.location.href='?hospital='+this.value" class="flex-1 max-w-xl px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                <?php foreach ($hospitals as $index => $hosp): ?>
-                    <option value="<?php echo $index; ?>" <?php echo $index === $selectedIndex ? 'selected' : ''; ?>>
-                        <?php echo htmlspecialchars($hosp['PTJ'] ?? "Hospital $index"); ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-            <span class="text-sm text-gray-500">(<?php echo count($hospitals); ?> hospitals)</span>
+<div class="bg-gradient-to-r from-blue-50 to-indigo-50 shadow-lg border-b border-blue-100">
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row items-center md:items-center gap-4 md:gap-6">
+            <!-- Icon and Label Section -->
+            <div class="flex items-center gap-3">
+                <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-md">
+                    <i class="fas fa-hospital-alt text-white text-xl"></i>
+                </div>
+                <div class="text-center md:text-left">
+                    <label class="text-lg font-bold text-gray-800 block">Select Fasiliti</label>
+                    <p class="text-sm text-gray-600">Choose a fasiliti to view detailed information</p>
+                </div>
+            </div>
+            
+            <!-- Selector Section -->
+            <div class="flex-1 flex flex-col md:flex-row items-center md:items-center gap-4">
+                <div class="relative flex-1 max-w-2xl">
+                    <select onchange="window.location.href='?hospital='+this.value" 
+                            class="w-full px-4 py-3 pl-12 pr-10 bg-white border-2 border-blue-200 rounded-xl text-gray-800 font-medium shadow-sm hover:border-blue-300 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-200 appearance-none cursor-pointer">
+                        <?php foreach ($hospitals as $index => $hosp): ?>
+                            <option value="<?php echo $index; ?>" <?php echo $index === $selectedIndex ? 'selected' : ''; ?>>
+                                <?php echo htmlspecialchars($hosp['PTJ'] ?? "Hospital $index"); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <!-- Custom dropdown icon -->
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                        <i class="fas fa-search text-blue-400"></i>
+                    </div>
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                        <i class="fas fa-chevron-down text-blue-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Hospital Count Badge -->
+                <div class="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm border border-blue-100">
+                    <div class="flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full">
+                        <i class="fas fa-chart-bar text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-bold text-blue-600"><?php echo count($hospitals); ?></span>
+                        <span class="text-sm text-gray-600 ml-1">Fasiliti</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -448,9 +426,9 @@ $hospital = [
 <!-- Hero Header Section -->
 <div class="gradient-bg text-white">
     <div class="max-w-7xl mx-auto px-4 py-12">
-        <div class="flex flex-col md:flex-row items-start justify-between gap-8">
+        <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-12">
             <!-- Hospital Info -->
-            <div class="flex-1 animate-fade-in-up">
+            <div class="flex-1 md:flex-[2] animate-fade-in-up">
                 <div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-sm mb-4 border border-white/30">
                     <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                     <span class="font-semibold"><?php echo $hospital['status'] ?? 'Active'; ?></span>
@@ -503,7 +481,7 @@ $hospital = [
             </div>
 
             <!-- Quick Contact Card -->
-            <div class="glass-effect rounded-2xl p-6 min-w-[300px] shadow-2xl animate-fade-in-up" style="animation-delay: 0.2s;">
+            <div class="glass-effect rounded-2xl p-6 w-full max-w-sm mx-auto md:mx-0 md:w-auto md:max-w-[350px] shadow-2xl animate-fade-in-up" style="animation-delay: 0.2s;">
                 <h3 class="text-sm uppercase tracking-wider mb-4 text-blue-600 font-bold flex items-center gap-2">
                     <i class="fas fa-phone-volume"></i>
                     Quick Contact
@@ -656,6 +634,54 @@ $hospital = [
                             echo 'N/A';
                         }
                     ?></div>
+                </div>
+            </div>
+
+            <!-- Staff Information Card -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+                <h2 class="text-xl font-bold text-gray-800 mb-5 flex items-center gap-2">
+                    <div class="bg-emerald-100 rounded-lg p-2">
+                        <i class="fas fa-users text-emerald-600"></i>
+                    </div>
+                    Maklumat Kakitangan
+                </h2>
+                <div class="space-y-4">
+                    <?php 
+                    $staffCategories = [
+                        ['name' => 'Doktor', 'permanent' => $hospitalData['Doktor'] ?? '', 'contract' => $hospitalData['DRC'] ?? '', 'icon' => 'fa-user-md', 'color' => 'blue'],
+                        ['name' => 'Jururawat', 'permanent' => $hospitalData['Jururawat'] ?? '', 'contract' => $hospitalData['JRC'] ?? '', 'icon' => 'fa-user-nurse', 'color' => 'pink'],
+                        ['name' => 'Penolog Pegawai Perubatan', 'permanent' => $hospitalData['PPP'] ?? '', 'contract' => $hospitalData['PPPC'] ?? '', 'icon' => 'fa-stethoscope', 'color' => 'purple'],
+                        ['name' => 'Radiologi', 'permanent' => $hospitalData['Radiologi'] ?? '', 'contract' => $hospitalData['RC'] ?? '', 'icon' => 'fa-x-ray', 'color' => 'indigo'],
+                        ['name' => 'Fisioterapi', 'permanent' => $hospitalData['Fisoterapi'] ?? '', 'contract' => $hospitalData['FC'] ?? '', 'icon' => 'fa-dumbbell', 'color' => 'green'],
+                        ['name' => 'Lain-lain', 'permanent' => $hospitalData['Lain-lain'] ?? '', 'contract' => $hospitalData['LC'] ?? '', 'icon' => 'fa-user-friends', 'color' => 'gray']
+                    ];
+
+                    foreach ($staffCategories as $category) {
+                        $permanent = !empty(trim($category['permanent'])) ? $category['permanent'] : '0';
+                        $contract = !empty(trim($category['contract'])) ? $category['contract'] : '0';
+                        $color = $category['color'];
+                        ?>
+                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-<?= $color ?>-50 to-<?= $color ?>-100 rounded-lg border border-<?= $color ?>-200">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-<?= $color ?>-200 rounded-lg p-2">
+                                    <i class="fas <?= $category['icon'] ?> text-<?= $color ?>-600 text-sm"></i>
+                                </div>
+                                <span class="font-medium text-gray-800 text-sm"><?= $category['name'] ?></span>
+                            </div>
+                            <div class="flex gap-4 text-sm">
+                                <div class="text-center">
+                                    <div class="font-bold text-<?= $color ?>-700"><?= htmlspecialchars($permanent) ?></div>
+                                    <div class="text-xs text-gray-500">Tetap</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="font-bold text-<?= $color ?>-600"><?= htmlspecialchars($contract) ?></div>
+                                    <div class="text-xs text-gray-500">Kontrak</div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
 
@@ -924,71 +950,11 @@ $hospital = [
 
 <script>
 // Store the Lain-Lain content for the modal
-const lainLainData = <?php echo json_encode($lainLainContent ?? ''); ?>;
+window.lainLainData = <?php echo json_encode($lainLainContent ?? ''); ?>;
 // Store the Lain Dept content for the modal
-const lainDeptData = <?php echo json_encode($lainDeptContent ?? ''); ?>;
-
-function openLainLainModal() {
-    const modal = document.getElementById('lainLainModal');
-    const content = document.getElementById('lainLainContent');
-    
-    if (lainLainData && lainLainData.trim() !== '') {
-        content.innerHTML = lainLainData;
-    } else {
-        content.innerHTML = '<p class="text-gray-500 italic">Tiada maklumat tambahan tersedia.</p>';
-    }
-    
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeLainLainModal() {
-    const modal = document.getElementById('lainLainModal');
-    modal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-}
-
-function openLainDeptModal() {
-    const modal = document.getElementById('lainDeptModal');
-    const content = document.getElementById('lainDeptContent');
-    
-    if (lainDeptData && lainDeptData.trim() !== '') {
-        content.innerHTML = lainDeptData;
-    } else {
-        content.innerHTML = '<p class="text-gray-500 italic">Tiada maklumat tambahan tersedia.</p>';
-    }
-    
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeLainDeptModal() {
-    const modal = document.getElementById('lainDeptModal');
-    modal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-}
-
-// Close modal when clicking outside
-document.getElementById('lainLainModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeLainLainModal();
-    }
-});
-
-document.getElementById('lainDeptModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeLainDeptModal();
-    }
-});
-
-// Close modal with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeLainLainModal();
-        closeLainDeptModal();
-    }
-});
+window.lainDeptData = <?php echo json_encode($lainDeptContent ?? ''); ?>;
 </script>
+<script src="assets/js/main.js"></script>
 
 </body>
 </html>
