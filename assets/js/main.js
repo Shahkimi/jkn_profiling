@@ -69,4 +69,30 @@ document.addEventListener('DOMContentLoaded', function() {
             closeLainDeptModal();
         }
     });
+
+    // Toggle for Staff Categories (See more / See less)
+    const toggleBtn = document.getElementById('toggleStaffCategories');
+    const moreContainer = document.getElementById('more-staff-categories');
+    if (toggleBtn && moreContainer) {
+        // Ensure starting collapsed state
+        moreContainer.style.maxHeight = '0px';
+        moreContainer.style.opacity = '0';
+
+        toggleBtn.addEventListener('click', function() {
+            const isShown = moreContainer.classList.contains('show');
+            if (!isShown) {
+                // Expand with smooth animation
+                moreContainer.classList.add('show');
+                moreContainer.style.maxHeight = moreContainer.scrollHeight + 'px';
+                moreContainer.style.opacity = '1';
+                toggleBtn.textContent = 'See less';
+            } else {
+                // Collapse with smooth animation
+                moreContainer.style.maxHeight = '0px';
+                moreContainer.style.opacity = '0';
+                moreContainer.classList.remove('show');
+                toggleBtn.textContent = 'See more';
+            }
+        });
+    }
 });

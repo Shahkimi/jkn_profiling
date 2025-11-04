@@ -40,3 +40,14 @@
 .animate-fade-in-up {
     animation: fadeInUp 0.6s ease-out forwards;
 }
+
+/* Collapsible container animation */
+.collapsible {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 300ms ease, opacity 300ms ease;
+}
+.collapsible.show {
+    opacity: 1;
+}

@@ -70,7 +70,7 @@ jkn_profiling/
 │       ├── main.js       # Main JavaScript functionality
 │       └── tailwind-config.js
 ├── cache/
-│   ├── hospitals_data.json    # Cached hospital data
+│   ├── facility_data.json     # Cached facility data
 │   └── cache_refresh.log      # Cache refresh logs
 ```
 
@@ -105,7 +105,7 @@ php cache_warmer.php
 ### Check Cache Status
 The system automatically manages cache freshness, but you can monitor it through:
 - Cache logs: `cache/cache_refresh.log`
-- Cache file: `cache/hospitals_data.json`
+- Cache file: `cache/facility_data.json`
 
 ## 🛡️ Security Features
 
@@ -155,6 +155,48 @@ If you encounter any issues or have questions:
 3. Ensure Google Sheets URL is accessible
 4. Check file permissions for the cache directory
 
+## 🔒 Security Best Practices
+
+### Environment Variables
+- **NEVER** commit `.env` files to version control
+- Use `.env.example` as a template for required variables
+- Store sensitive data in environment variables or secure vaults
+- Rotate credentials immediately if accidentally exposed
+
+### Pre-commit Security
+```bash
+# Install pre-commit hooks to prevent .env commits
+pip install pre-commit
+pre-commit install
+```
+
+### GitHub Security Features
+- Enable **Dependabot** for dependency updates
+- Turn on **Secret scanning** in repository settings
+- Use **Branch protection rules** for main branches
+- Enable **Two-factor authentication** for your account
+
+### If You Accidentally Commit Secrets
+
+1. **Immediately rotate all exposed credentials**
+2. **Remove from history using git-filter-repo:**
+   ```bash
+   # Install git-filter-repo
+   pip install git-filter-repo
+   
+   # Remove file from entire history
+   git-filter-repo --path .env --invert-paths
+   
+   # Force push to update remote
+   git push origin --force --all
+   ```
+3. **Verify removal** by checking GitHub interface and cloning fresh
+
+### Monitoring
+- Set up alerts for unusual repository access
+- Regularly audit repository permissions
+- Monitor for leaked credentials using tools like GitGuardian
+
 ## 🔮 Roadmap
 
 - [ ] Database integration option
@@ -163,6 +205,8 @@ If you encounter any issues or have questions:
 - [ ] Multi-language support
 - [ ] API endpoints for mobile apps
 - [ ] Real-time notifications
+- [ ] Enhanced security monitoring
+- [ ] Automated security scanning
 
 ---
 

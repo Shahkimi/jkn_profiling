@@ -24,7 +24,7 @@ if (file_exists(__DIR__ . '/.env')) {
 }
 
 // Cache configuration
-$cacheFile = __DIR__ . '/cache/hospitals_data.json';
+$cacheFile = __DIR__ . '/cache/facility_data.json';
 $cacheExpiry = (int)(getenv('CACHE_EXPIRY') ?: 3600); // 1 hour default
 
 function warmCache($cacheFile) {

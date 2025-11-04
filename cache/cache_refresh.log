@@ -92,3 +92,18 @@
 2025-10-30 04:36:42 - Started background cache refresh (PID: 34088)
 2025-10-30 04:36:45 - Successfully refreshed cache with 12 hospitals
 2025-10-30 04:36:45 - Completed background cache refresh
+2025-11-04 00:53:01 - Started background cache refresh (PID: 32724)
+2025-11-04 00:53:01 - Failed to fetch data from Google Sheets during background refresh
+2025-11-04 00:53:01 - Completed background cache refresh
+2025-11-04 00:53:02 - Started background cache refresh (PID: 32724)
+2025-11-04 00:53:02 - Failed to fetch data from Google Sheets during background refresh
+2025-11-04 00:53:02 - Completed background cache refresh
+2025-11-04 02:06:13 - Started background cache refresh (PID: 12980)
+2025-11-04 02:06:15 - Successfully refreshed cache with 12 hospitals
+2025-11-04 02:06:15 - Completed background cache refresh
+2025-11-04 03:11:58 - Started background cache refresh (PID: 12980)
+2025-11-04 03:11:59 - Successfully refreshed cache with 12 hospitals
+2025-11-04 03:11:59 - Completed background cache refresh
+2025-11-04 06:32:56 - Started background cache refresh (PID: 2172)
+2025-11-04 06:32:58 - Successfully refreshed cache with 12 hospitals
+2025-11-04 06:32:58 - Completed background cache refresh
