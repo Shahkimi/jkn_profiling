@@ -454,7 +454,7 @@ $hospital = [
                 
                 <div class="flex items-center gap-2 text-blue-100 mb-2">
                     <i class="fas fa-calendar-alt"></i>
-                    <span>Tahun Operasi: <?php echo $hospital['established_date'] ?? '1985'; ?></span>
+                    <span>Tahun Operasi : <?php echo $hospital['established_date'] ?? '1985'; ?></span>
                 </div>
                 
                 <?php 
@@ -463,7 +463,7 @@ $hospital = [
                 ?>
                 <div class="flex items-center gap-2 text-blue-100 mb-2">
                     <i class="fas fa-layer-group"></i>
-                    <span>Kluster: <?php echo $clusterData; ?></span>
+                    <span>Kluster : <?php echo $clusterData; ?></span>
                 </div>
                 <?php endif; ?>
 

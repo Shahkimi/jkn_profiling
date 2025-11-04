@@ -1,5 +1,5 @@
 {
-    "timestamp": 1761799005,
+    "timestamp": 1762225919,
     "hospitals": [
         {
             "PTJ": "Hospital Sultanah Maliha",
@@ -404,7 +404,7 @@
             "Fisioterapi": "Ada",
             "Pemulihan cara Kerja": "Ada",
             "Kerja Sosial": "Tiada",
-            "Lain-Lain (Sila Nyatakan": "Unit Hemodialisis\nKlinik Pakar\nUnit Penjagaan Luka\nUnit Bekalan Bahan Steril\nUnit Keselamatan dan Kesihatan Pekerjaan\nUnit Kawalan Infeksi\nUnit Rekod Perubatan\nUnit Casemix\nUnit Kualiti",
+            "Lain-Lain (Sila Nyatakan": "1. Unit Hemodialisis\n2. Klinik Pakar\n3. Unit Penjagaan Luka\n4. Unit Bekalan Bahan Steril\n5. Unit Keselamatan dan Kesihatan Pekerjaan\n6. Unit Kawalan Infeksi\n7. Unit Rekod Perubatan\n8. Unit Casemix\n9. Unit Kualiti",
             "Staff Tetap": "302",
             "Staff Kontrak": "21",
             "Jumlah katil": "93",
@@ -516,7 +516,7 @@
             "Jumlah katil": "320",
             "BOR": "96.50 %",
             "ALOS": "4.2",
-            "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "1. Surau\n2. Kafe\n3. Parkir awam\n4. Mesin ATM\n5. Vending Machine\n6. HospiMart\n7. Court Sukan",
+            "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "Surau\nKafe\nParkir awam\nMesin ATM\nVending Machine\nHospiMart\nCourt Sukan",
             "Kluster": "NA",
             "Doktor": "",
             "DRC": "",
@@ -569,7 +569,7 @@
             "Jumlah katil": "80",
             "BOR": "63.08 %",
             "ALOS": "3.53",
-            "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "1. Balai Pelawat\n2. Kafe\n3. Parking awam\n4. Vending Machine\n5. Surau\n6. Asrama Jururawat\n7. Court Sukan",
+            "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "Balai Pelawat\nKafe\nParking awam\nVending Machine\nSurau\nAsrama Jururawat\nCourt Sukan",
             "Kluster": "HOKKU",
             "Doktor": "",
             "DRC": "",
@@ -622,7 +622,7 @@
             "Jumlah katil": "91",
             "BOR": "64.23 %",
             "ALOS": "2.73",
-            "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "1. Surau\n2. Kafe\n3. Parkir awam\n4.Dewan Sinaran Minda\n5. Vending Machine\n6.Asrama Jururawat \n7. Court Sukan",
+            "Fasiliti\/Kemudahan (CTH : Surau, parking dll)": "Surau\nKafe\nParkir awam\nDewan Sinaran Minda\nVending Machine\nAsrama Jururawat \nCourt Sukan",
             "Kluster": "HOKKU",
             "Doktor": "",
             "DRC": "",
