@@ -28,7 +28,7 @@ loadEnv(__DIR__ . '/.env');
 
 // Cache configuration from .env
 $cacheDir = __DIR__ . '/' . (getenv('CACHE_DIRECTORY') ?: 'cache');
-$cacheFile = $cacheDir . '/hospitals_data.json';
+$cacheFile = $cacheDir . '/facility_data.json';
 $cacheExpiry = (int)(getenv('CACHE_EXPIRY') ?: 3600);
 
 // Create cache directory if it doesn't exist
@@ -655,8 +655,11 @@ $hospital = [
                         ['name' => 'Fisioterapi', 'permanent' => $hospitalData['Fisoterapi'] ?? '', 'contract' => $hospitalData['FC'] ?? '', 'icon' => 'fa-dumbbell', 'color' => 'green'],
                         ['name' => 'Lain-lain', 'permanent' => $hospitalData['Lain-lain'] ?? '', 'contract' => $hospitalData['LC'] ?? '', 'icon' => 'fa-user-friends', 'color' => 'gray']
                     ];
+                    $initialCategories = array_slice($staffCategories, 0, 3);
+                    $moreCategories = array_slice($staffCategories, 3);
 
-                    foreach ($staffCategories as $category) {
+                    // Render first 3 categories
+                    foreach ($initialCategories as $category) {
                         $permanent = !empty(trim($category['permanent'])) ? $category['permanent'] : '0';
                         $contract = !empty(trim($category['contract'])) ? $category['contract'] : '0';
                         $color = $category['color'];
@@ -678,6 +681,44 @@ $hospital = [
                                     <div class="text-xs text-gray-500">Kontrak</div>
                                 </div>
                             </div>
+                        </div>
+                        <?php
+                    }
+
+                    // Render the rest hidden by default with a toggle
+                    if (!empty($moreCategories)) {
+                        ?>
+                        <div id="more-staff-categories" class="space-y-4 collapsible">
+                            <?php foreach ($moreCategories as $category) {
+                                $permanent = !empty(trim($category['permanent'])) ? $category['permanent'] : '0';
+                                $contract = !empty(trim($category['contract'])) ? $category['contract'] : '0';
+                                $color = $category['color'];
+                                ?>
+                                <div class="flex items-center justify-between p-3 bg-gradient-to-r from-<?= $color ?>-50 to-<?= $color ?>-100 rounded-lg border border-<?= $color ?>-200">
+                                    <div class="flex items-center gap-3">
+                                        <div class="bg-<?= $color ?>-200 rounded-lg p-2">
+                                            <i class="fas <?= $category['icon'] ?> text-<?= $color ?>-600 text-sm"></i>
+                                        </div>
+                                        <span class="font-medium text-gray-800 text-sm"><?= $category['name'] ?></span>
+                                    </div>
+                                    <div class="flex gap-4 text-sm">
+                                        <div class="text-center">
+                                            <div class="font-bold text-<?= $color ?>-700"><?= htmlspecialchars($permanent) ?></div>
+                                            <div class="text-xs text-gray-500">Tetap</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="font-bold text-<?= $color ?>-600"><?= htmlspecialchars($contract) ?></div>
+                                            <div class="text-xs text-gray-500">Kontrak</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            } ?>
+                        </div>
+                        <div class="mt-3 flex justify-center">
+                            <button id="toggleStaffCategories" type="button" class="text-sm px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 transition">
+                                See more
+                            </button>
                         </div>
                         <?php
                     }

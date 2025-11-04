@@ -70,7 +70,7 @@ jkn_profiling/
 │       ├── main.js       # Main JavaScript functionality
 │       └── tailwind-config.js
 ├── cache/
-│   ├── hospitals_data.json    # Cached hospital data
+│   ├── facility_data.json     # Cached facility data
 │   └── cache_refresh.log      # Cache refresh logs
 ```
 
@@ -105,7 +105,7 @@ php cache_warmer.php
 ### Check Cache Status
 The system automatically manages cache freshness, but you can monitor it through:
 - Cache logs: `cache/cache_refresh.log`
-- Cache file: `cache/hospitals_data.json`
+- Cache file: `cache/facility_data.json`
 
 ## 🛡️ Security Features
 
